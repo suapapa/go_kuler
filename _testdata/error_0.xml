@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <success>false</success>
+  <error>
+    <errorCode>0</errorCode>
+    <errorText>Sorry, this API call now requires an API key.  To apply for one please visit http://kuler.adobe.com/api.  
+				If you are receiving this message from an RSS subscription, please visit http://kuler.adobe.com to re-subscribe to this feed.</errorText>
+  </error>
+</root>
