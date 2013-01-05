@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <rss xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rss="http://blogs.law.harvard.edu/tech/rss" xmlns:kuler="http://kuler.adobe.com/kuler/API/rss/" version="2.0"> -->
+  <kuler:swatch>
+    <kuler:swatchHexColor>F6F792</kuler:swatchHexColor>
+    <kuler:swatchColorMode>rgb</kuler:swatchColorMode>
+    <kuler:swatchChannel1>0.964706</kuler:swatchChannel1>
+    <kuler:swatchChannel2>0.968627</kuler:swatchChannel2>
+    <kuler:swatchChannel3>0.572549</kuler:swatchChannel3>
+    <kuler:swatchChannel4>0.0</kuler:swatchChannel4>
+    <kuler:swatchIndex>0</kuler:swatchIndex>
+  </kuler:swatch>
+<!-- </rss> -->
