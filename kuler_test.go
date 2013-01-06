@@ -7,6 +7,18 @@ import (
 	"testing"
 )
 
+func TestRssChannel(t *testing.T) {
+	d, _ := ioutil.ReadFile("_testdata/highest_rated.xml")
+	var rc rssChannel
+	if err := xml.Unmarshal(d, &rc); err != nil {
+		t.Fatalf("%s", err)
+	}
+
+	for _, c := range rc.Items {
+		fmt.Println(c)
+	}
+}
+
 func TestTheme(t *testing.T) {
 	d, _ := ioutil.ReadFile("_testdata/theme_example.xml")
 	var kt theme
