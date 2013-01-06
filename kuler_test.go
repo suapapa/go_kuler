@@ -7,11 +7,21 @@ import (
 	"testing"
 )
 
+func TestTheme(t *testing.T) {
+	d, _ := ioutil.ReadFile("_testdata/theme_example.xml")
+	var kt theme
+	if err := xml.Unmarshal(d, &kt); err != nil {
+		t.Fatalf("%s", err)
+	}
+
+	fmt.Println(kt)
+}
+
 func TestSwatch(t *testing.T) {
 	d, _ := ioutil.ReadFile("_testdata/swatch_example.xml")
 	var s swatch
 	if err := xml.Unmarshal(d, &s); err != nil {
-		fmt.Println(err)
+		t.Fatalf("%s", err)
 	}
 
 	r, g, b, _ := s.RGBA()
