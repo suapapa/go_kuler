@@ -8,8 +8,6 @@ import (
 	"fmt"
 )
 
-/* https://learn.adobe.com/wiki/display/kulerdev/B.%20Feeds */
-
 func NewService(key string) *Service {
 	s := new(Service)
 	s.apiKey = key
@@ -31,27 +29,27 @@ func (s *Service) List(start, max uint) ([]Theme, error) {
 
 func (s *Service) ListRecent(start, max uint) ([]Theme, error) {
 	opt := listOption{"recent", &pageOption{start, max}}
-	return retrive(s.queryUrl(&opt))
+	return retriveThemes(s.queryUrl(&opt))
 }
 
 func (s *Service) ListPopular(start, max uint) ([]Theme, error) {
 	opt := listOption{"popular", &pageOption{start, max}}
-	return retrive(s.queryUrl(&opt))
+	return retriveThemes(s.queryUrl(&opt))
 }
 
 func (s *Service) ListRating(start, max uint) ([]Theme, error) {
 	opt := listOption{"rating", &pageOption{start, max}}
-	return retrive(s.queryUrl(&opt))
+	return retriveThemes(s.queryUrl(&opt))
 }
 
 func (s *Service) ListRandom(start, max uint) ([]Theme, error) {
 	opt := listOption{"random", &pageOption{start, max}}
-	return retrive(s.queryUrl(&opt))
+	return retriveThemes(s.queryUrl(&opt))
 }
 
 func (s *Service) Search(key string, start, max uint) ([]Theme, error) {
 	opt := searchOption{key, &pageOption{start, max}}
-	return retrive(s.queryUrl(&opt))
+	return retriveThemes(s.queryUrl(&opt))
 }
 
 func (s *Service) SearchThemeID(key string, start, max uint) ([]Theme, error) {

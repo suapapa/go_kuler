@@ -35,7 +35,7 @@ func (t Theme) String() string {
 	return s
 }
 
-type rssChannel struct {
+type themeFeed struct {
 	XMLName xml.Name `xml:"rss"`
 	// Title          string   `xml:"channel>title"`
 	// Link           string   `xml:"channel>link"`
@@ -53,9 +53,9 @@ type rssChannel struct {
 	Items       []Theme `xml:"channel>item>themeItem"`
 }
 
-func retrive(url string) ([]Theme, error) {
-	logD("fetching " + url + "...")
-	res, err := http.Get(url)
+func retriveThemes(qUrl string) ([]Theme, error) {
+	logD("fetching " + qUrl + "...")
+	res, err := http.Get(qUrl)
 	if err != nil {
 		return nil, errors.New("server error")
 	}
@@ -67,7 +67,7 @@ func retrive(url string) ([]Theme, error) {
 	}
 
 	logD("unmarshlling...")
-	var rc rssChannel
+	var rc themeFeed
 	if err := xml.Unmarshal(data, &rc); err != nil {
 		logE("%s", err)
 		if err := unmarshalServiceError(data); err != nil {

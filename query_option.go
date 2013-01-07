@@ -6,6 +6,7 @@ package kuler
 
 import (
 	"fmt"
+	"net/url"
 )
 
 type pageOption struct {
@@ -47,5 +48,5 @@ type searchOption struct {
 
 func (q *searchOption) String() string {
 	return fmt.Sprintf("rss/search.cfm?searchQuery=%s&%s",
-		q.searchOption, q.page)
+		url.QueryEscape(q.searchOption), q.page)
 }

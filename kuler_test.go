@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -19,9 +20,14 @@ func testLogout() {
 	/* LogTo(ioutil.Discard) */
 }
 
+func testApiKey() string {
+	k, _ := ioutil.ReadFile(".apikey")
+	return strings.TrimSpace(string(k))
+}
+
 func TestSearch(t *testing.T) {
 	testLogout()
-	s := NewService(TEST_API_KEY)
+	s := NewService(testApiKey())
 	if ts, err := s.Search("MLP", 0, 0); err == nil {
 		for _, t := range ts {
 			logD("%s", t)
@@ -34,7 +40,7 @@ func TestSearch(t *testing.T) {
 
 func TestListRandom(t *testing.T) {
 	testLogout()
-	s := NewService(TEST_API_KEY)
+	s := NewService(testApiKey())
 	if ts, err := s.ListRandom(0, 0); err == nil {
 		for _, t := range ts {
 			logD("%s", t)
@@ -71,7 +77,7 @@ func TestServiceQueryUrl(t *testing.T) {
 func TestRssChannel(t *testing.T) {
 	testLogout()
 	d, _ := ioutil.ReadFile("_testdata/highest_rated.xml")
-	var rc rssChannel
+	var rc themeFeed
 	if err := xml.Unmarshal(d, &rc); err != nil {
 		t.Fatalf("%s", err)
 	}
