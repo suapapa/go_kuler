@@ -11,6 +11,11 @@ import (
 
 var logger *log.Logger
 
+// Set kurler's log out.
+// For example, to log on stdout;
+//
+//     kuler.LogTo(os.Stdout)
+//
 func LogTo(out io.Writer) {
 	logger = log.New(out, "kuler ", log.LstdFlags)
 }

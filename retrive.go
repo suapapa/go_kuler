@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// A Kuler theme is consists of 5 swatches.
 type Theme struct {
 	XMLName       xml.Name `xml:"themeItem"`
 	ID            string   `xml:"themeID"`
