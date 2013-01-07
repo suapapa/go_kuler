@@ -95,7 +95,7 @@ func TestTheme(t *testing.T) {
 func TestSwatch(t *testing.T) {
 	testLogout()
 	d, _ := ioutil.ReadFile("_testdata/swatch_example.xml")
-	var s swatch
+	var s Swatch
 	if err := xml.Unmarshal(d, &s); err != nil {
 		t.Fatalf("%s", err)
 	}

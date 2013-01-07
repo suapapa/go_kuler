@@ -20,7 +20,7 @@ type Theme struct {
 	DownloadCount int      `xml:"themeDownloadCount"`
 	CreatedAt     string   `xml:"themeCreatedAt"`
 	EditedAt      string   `xml:"themeEditedAt"`
-	Swatches      []swatch `xml:"themeSwatches>swatch"`
+	Swatches      []Swatch `xml:"themeSwatches>swatch"`
 }
 
 func (t Theme) String() string {

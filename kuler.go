@@ -6,8 +6,6 @@ package kuler
 
 import (
 	"fmt"
-	// "net/http"
-	// "net/url"
 )
 
 /* https://learn.adobe.com/wiki/display/kulerdev/B.%20Feeds */

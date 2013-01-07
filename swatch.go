@@ -8,7 +8,8 @@ import (
 	"encoding/xml"
 )
 
-type swatch struct {
+// Swatch is a color of Kuler theme
+type Swatch struct {
 	XMLName   xml.Name `xml:"swatch"`
 	HexColor  string   `xml:"swatchHexColor"`
 	ColorMode string   `xml:"swatchColorMode"`
@@ -19,11 +20,11 @@ type swatch struct {
 	Index     int      `xml:"swatchIndex"`
 }
 
-func (s swatch) String() string {
+func (s Swatch) String() string {
 	return "#" + s.HexColor
 }
 
-func (s swatch) RGBA() (r, g, b, a uint32) {
+func (s Swatch) RGBA() (r, g, b, a uint32) {
 	r = toU16(s.Channel1)
 	g = toU16(s.Channel2)
 	b = toU16(s.Channel3)
