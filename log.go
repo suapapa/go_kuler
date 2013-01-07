@@ -1,3 +1,7 @@
+// Copyright 2013, Homin Lee. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 package kuler
 
 import (
@@ -8,8 +12,6 @@ import (
 var logger *log.Logger
 
 func LogTo(out io.Writer) {
-	// io/ioutil.Discard
-	// os.Stdout
 	logger = log.New(out, "kuler ", log.LstdFlags)
 }
 

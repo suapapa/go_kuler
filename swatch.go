@@ -1,3 +1,7 @@
+// Copyright 2013, Homin Lee. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
 package kuler
 
 import (
@@ -20,14 +24,14 @@ func (s swatch) String() string {
 }
 
 func (s swatch) RGBA() (r, g, b, a uint32) {
-	r = s.toU16(s.Channel1)
-	g = s.toU16(s.Channel2)
-	b = s.toU16(s.Channel3)
+	r = toU16(s.Channel1)
+	g = toU16(s.Channel2)
+	b = toU16(s.Channel3)
 	a = 0xffff
 	return
 }
 
-func (s swatch) toU16(c float32) uint32 {
+func toU16(c float32) uint32 {
 	r := uint32(0xffff*c + 0.5)
 	return r
 }
