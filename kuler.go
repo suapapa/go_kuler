@@ -27,55 +27,55 @@ func (s *Service) queryUrl(option interface{}) string {
 		option, s.apiKey)
 }
 
-func (s *Service) List(startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.ListRecent(startIdx, itemsPerPage)
+func (s *Service) List(start, max uint) ([]Theme, error) {
+	return s.ListRecent(start, max)
 }
 
-func (s *Service) ListRecent(startIdx, itemsPerPage uint) ([]Theme, error) {
-	opt := listOption{"recent", &pageOption{startIdx, itemsPerPage}}
+func (s *Service) ListRecent(start, max uint) ([]Theme, error) {
+	opt := listOption{"recent", &pageOption{start, max}}
 	return retrive(s.queryUrl(&opt))
 }
 
-func (s *Service) ListPopular(startIdx, itemsPerPage uint) ([]Theme, error) {
-	opt := listOption{"popular", &pageOption{startIdx, itemsPerPage}}
+func (s *Service) ListPopular(start, max uint) ([]Theme, error) {
+	opt := listOption{"popular", &pageOption{start, max}}
 	return retrive(s.queryUrl(&opt))
 }
 
-func (s *Service) ListRating(startIdx, itemsPerPage uint) ([]Theme, error) {
-	opt := listOption{"rating", &pageOption{startIdx, itemsPerPage}}
+func (s *Service) ListRating(start, max uint) ([]Theme, error) {
+	opt := listOption{"rating", &pageOption{start, max}}
 	return retrive(s.queryUrl(&opt))
 }
 
-func (s *Service) ListRandom(startIdx, itemsPerPage uint) ([]Theme, error) {
-	opt := listOption{"random", &pageOption{startIdx, itemsPerPage}}
+func (s *Service) ListRandom(start, max uint) ([]Theme, error) {
+	opt := listOption{"random", &pageOption{start, max}}
 	return retrive(s.queryUrl(&opt))
 }
 
-func (s *Service) Search(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	opt := searchOption{key, &pageOption{startIdx, itemsPerPage}}
+func (s *Service) Search(key string, start, max uint) ([]Theme, error) {
+	opt := searchOption{key, &pageOption{start, max}}
 	return retrive(s.queryUrl(&opt))
 }
 
-func (s *Service) SearchThemeID(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.Search("themeID:"+key, startIdx, itemsPerPage)
+func (s *Service) SearchThemeID(key string, start, max uint) ([]Theme, error) {
+	return s.Search("themeID:"+key, start, max)
 }
 
-func (s *Service) SearchUserID(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.Search("userID:"+key, startIdx, itemsPerPage)
+func (s *Service) SearchUserID(key string, start, max uint) ([]Theme, error) {
+	return s.Search("userID:"+key, start, max)
 }
 
-func (s *Service) SearchEmail(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.Search("email:"+key, startIdx, itemsPerPage)
+func (s *Service) SearchEmail(key string, start, max uint) ([]Theme, error) {
+	return s.Search("email:"+key, start, max)
 }
 
-func (s *Service) SearchTag(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.Search("tag:"+key, startIdx, itemsPerPage)
+func (s *Service) SearchTag(key string, start, max uint) ([]Theme, error) {
+	return s.Search("tag:"+key, start, max)
 }
 
-func (s *Service) SearchHex(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.Search("hex:"+key, startIdx, itemsPerPage)
+func (s *Service) SearchHex(key string, start, max uint) ([]Theme, error) {
+	return s.Search("hex:"+key, start, max)
 }
 
-func (s *Service) SearchTitle(key string, startIdx, itemsPerPage uint) ([]Theme, error) {
-	return s.Search("title:"+key, startIdx, itemsPerPage)
+func (s *Service) SearchTitle(key string, start, max uint) ([]Theme, error) {
+	return s.Search("title:"+key, start, max)
 }
