@@ -9,27 +9,48 @@ import (
 	"log"
 )
 
+const (
+	// Log level flags for flag of logger
+	LLerror = 1 << (iota + 8)
+	LLwarnning
+	LLdebug
+	LLall = LLerror | LLwarnning | LLdebug
+)
+
 var logger *log.Logger
 
 // Set kurler's log out.
-// For example, to log on stdout;
+// For example, to log on stderr;
 //
-//     kuler.LogTo(os.Stdout)
+//     kuler.LogTo(os.Stderr)
 //
 func LogTo(out io.Writer) {
-	logger = log.New(out, "kuler ", log.LstdFlags)
+	logger = log.New(out, "kuler ", log.LstdFlags|LLall)
 }
 
 func logE(format string, v ...interface{}) {
 	if logger == nil {
 		return
 	}
-	logger.Printf("E:"+format+"\n", v...)
+	if logger.Flags()&LLerror != 0 {
+		logger.Printf("E:"+format+"\n", v...)
+	}
+}
+
+func logW(format string, v ...interface{}) {
+	if logger == nil {
+		return
+	}
+	if logger.Flags()&LLwarnning != 0 {
+		logger.Printf("W:"+format+"\n", v...)
+	}
 }
 
 func logD(format string, v ...interface{}) {
 	if logger == nil {
 		return
 	}
-	logger.Printf("D:"+format+"\n", v...)
+	if logger.Flags()&LLdebug != 0 {
+		logger.Printf("D:"+format+"\n", v...)
+	}
 }

@@ -16,7 +16,7 @@ type pageOption struct {
 
 func (q *pageOption) String() string {
 	if 1 > q.itemsPerPage || q.itemsPerPage > 100 {
-		logE("invaild itemsPerPage, %d. Fix it to 20", q.itemsPerPage)
+		logW("invaild itemsPerPage, %d. Fix it to 20", q.itemsPerPage)
 		q.itemsPerPage = 20
 	}
 	return fmt.Sprintf("startIndex=%d&itemsPerPage=%d",
@@ -33,7 +33,7 @@ func (q *listOption) String() string {
 	case "recent", "popular", "rating", "random":
 		// valid options
 	default:
-		logE("invalid listType, %s. Fix it to recent", q.listType)
+		logW("invalid listType, %s. Fix it to recent", q.listType)
 		q.listType = "recent"
 	}
 
