@@ -21,8 +21,22 @@ func testLogout() {
 }
 
 func testApiKey() string {
+	/* return TEST_API_KEY */
 	k, _ := ioutil.ReadFile(".apikey")
 	return strings.TrimSpace(string(k))
+}
+
+func TestCMYK(t *testing.T) {
+	testLogout()
+	s := NewService(testApiKey())
+	if ts, err := s.SearchThemeID("178445", 0, 0); err == nil {
+		for _, t := range ts {
+			logD("%s", t)
+		}
+	} else {
+		logE("%s", err)
+	}
+	logD("---- end of TestCMYK ----")
 }
 
 func TestSearch(t *testing.T) {

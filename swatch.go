@@ -25,10 +25,21 @@ func (s Swatch) String() string {
 }
 
 func (s Swatch) RGBA() (r, g, b, a uint32) {
-	r = toU16(s.Channel1)
-	g = toU16(s.Channel2)
-	b = toU16(s.Channel3)
-	a = 0xffff
+	switch s.ColorMode {
+	case "rgb":
+		r = toU16(s.Channel1)
+		g = toU16(s.Channel2)
+		b = toU16(s.Channel3)
+		a = 0xffff
+	case "cmyk":
+		c, m, y, k := s.Channel1, s.Channel2, s.Channel3, s.Channel4
+		r = toU16((1 - c) * (1 - k))
+		g = toU16((1 - m) * (1 - k))
+		b = toU16((1 - y) * (1 - k))
+		a = 0xffff
+	default:
+		logE("Unknown color format, %s!", s.ColorMode)
+	}
 	return
 }
 
