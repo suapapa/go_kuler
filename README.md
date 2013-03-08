@@ -13,9 +13,10 @@ Docs are avaiable at [godoc.org][3].
 
 Search pony themes:
 
-    import github.com/suapapa/go_kuler
+    import "github.com/suapapa/go_kuler"
     ...
-    ks := kuler.NewService("YOUR_APIKEY")
+    // Set yout kuler apikey to evnvar, KULER_APIKEY
+    ks := kuler.NewService(os.Getenv("KULER_APIKEY"))
     themes, _ := ks.Search("MLP", 0, 20)
     for _, t := range themes {
         fmt.Println(t)

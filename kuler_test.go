@@ -9,26 +9,21 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"strings"
 	"testing"
 )
 
-const TEST_API_KEY = "your_apikey_here"
+var (
+	KULER_APIKEY = os.Getenv("KULER_APIKEY")
+)
 
 func testLogout() {
 	LogTo(os.Stdout)
 	/* LogTo(ioutil.Discard) */
 }
 
-func testApiKey() string {
-	/* return TEST_API_KEY */
-	k, _ := ioutil.ReadFile(".apikey")
-	return strings.TrimSpace(string(k))
-}
-
 func TestCMYK(t *testing.T) {
 	testLogout()
-	s := NewService(testApiKey())
+	s := NewService(KULER_APIKEY)
 	if ts, err := s.SearchThemeID("178445", 0, 0); err == nil {
 		for _, t := range ts {
 			logD("%s", t)
@@ -41,7 +36,7 @@ func TestCMYK(t *testing.T) {
 
 func TestSearch(t *testing.T) {
 	testLogout()
-	s := NewService(testApiKey())
+	s := NewService(KULER_APIKEY)
 	if ts, err := s.Search("MLP", 0, 0); err == nil {
 		for _, t := range ts {
 			logD("%s", t)
@@ -54,7 +49,7 @@ func TestSearch(t *testing.T) {
 
 func TestListRandom(t *testing.T) {
 	testLogout()
-	s := NewService(testApiKey())
+	s := NewService(KULER_APIKEY)
 	if ts, err := s.ListRandom(0, 0); err == nil {
 		for _, t := range ts {
 			logD("%s", t)
